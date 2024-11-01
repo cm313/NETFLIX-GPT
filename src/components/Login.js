@@ -1,16 +1,14 @@
 import React,{useState, useRef} from 'react';
-import LogoHeader from "./LogoHeader";
+import Header from "./Header";
 import {validateFormData} from "../utils/validate";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../utils/firbase";
-import {useNavigate} from "react-router-dom";
 import profilePic from "../images/ChandraMahesh_ProfilePic.jpg"
 import {updateProfile } from "firebase/auth";
 import {useDispatch} from "react-redux";
 import {addUser} from "../utils/signedInUserDataSlice";
 
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const[isSignInForm, setSignInForm] = useState(true);
   const[errorMessage, setErrorMessage] = useState(null);
@@ -50,7 +48,7 @@ const Login = () => {
                   email: email, 
                   photoURL: photoURL}
                 ));
-                navigate("/browse");
+               
               }).catch((error) => {
                 // An error occurred
                 setErrorMessage(error.message);
@@ -72,7 +70,13 @@ const Login = () => {
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            navigate("/browse");
+            const {uid, displayName, email, photoURL} = user;
+                dispatch(addUser({uid: uid, 
+                  displayName: displayName, 
+                  email: email, 
+                  photoURL: photoURL}
+                ));
+           
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -85,7 +89,7 @@ const Login = () => {
   
   return (
     <div className="m-0 h-[1500px]">
-      <LogoHeader />
+      <Header />
       <div className="absolute">
         <img className="filter brightness-75 z-0" src="https://assets.nflxext.com/ffe/siteui/vlv3/7c0e18aa-2c95-474d-802e-7f30e75dcca4/web/IN-en-20241014-TRIFECTA-perspective_e7121311-c11e-4809-a3e6-22abffa33569_small.jpg" alt="Background Loading"></img>
       </div>
