@@ -3,21 +3,16 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const signedInUserDataSlice = createSlice({
   name : "authenticatedUserData",
-  initialState:{
-    usersData:[]
-  },
+  initialState: null,
   reducers:{
    addUser: (state,action)=>{
-      state.usersData.push(action.payload);
+      return action.payload;
    },
-   removeUser: (state)=>{
-    state.usersData.pop();
+   removeUser: (state, action)=>{
+    return null;
    },
-   clearUsersData: ()=>{
-    return {usersData: []};
-   }
   },
 }); 
 
 export default signedInUserDataSlice.reducer;
-export const{addUser, removeUser, clearUsersData} = signedInUserDataSlice.actions;
+export const{addUser, removeUser} = signedInUserDataSlice.actions;
