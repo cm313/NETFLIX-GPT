@@ -26,7 +26,7 @@ const Header = () => {
  useEffect(()=>{
   /*When ever the Authentication like signIn, signUp, signOut is triggered this
    onAuthStateChanged API is automatically Called*/
-onAuthStateChanged(auth, (user) => {
+const unsubscribe = onAuthStateChanged(auth, (user) => {
   if (user) {
     // when user is signed in
    /*Here "user" is an object which contains details of the user who is 
@@ -45,6 +45,9 @@ onAuthStateChanged(auth, (user) => {
     navigate("/");
   }
 });
+
+return ()=> unsubscribe();
+
 }, []);
 
 
