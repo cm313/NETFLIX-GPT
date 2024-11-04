@@ -1,10 +1,9 @@
 import React,{useState, useRef} from 'react';
 import Header from "./Header";
 import {validateFormData} from "../utils/validate";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile} from "firebase/auth";
 import {auth} from "../utils/firbase";
 import profilePic from "../images/ChandraMahesh_ProfilePic.jpg"
-import {updateProfile } from "firebase/auth";
 import {useDispatch} from "react-redux";
 import {addUser} from "../utils/signedInUserDataSlice";
 
@@ -18,7 +17,7 @@ const Login = () => {
   const nameObj = useRef(null);
 
   /*useRef() will return a Object, where the data is stored inside "value" property,
-   which is present inside "current" objec. therefore emailObj.current.value*/
+   which is present inside "current" object. therefore emailObj.current.value*/
 
    const updateForm = ()=>{
     setSignInForm(!isSignInForm)

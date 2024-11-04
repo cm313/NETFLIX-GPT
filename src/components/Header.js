@@ -6,13 +6,14 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {addUser, removeUser} from "../utils/signedInUserDataSlice";
 import {useSelector} from "react-redux";
+import { toggleGptSearchView } from '../utils/gptSlice';
 
 
 const Header = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const  userData = useSelector((store)=>store.authenticatedUserData);
+  const  userData = useSelector((store)=>store?.authenticatedUserData);
 
  const handleLogout= ()=>{
     signOut(auth).then(() => {
@@ -24,8 +25,9 @@ const Header = () => {
  } 
 
  useEffect(()=>{
-  /*When ever the Authentication like signIn, signUp, signOut is triggered this
+  /*When ever the Authentication like signIn, signUp, signOut buttons is cliked/triggered this
    onAuthStateChanged API is automatically Called*/
+   // This method will return a unsubscribe function
 const unsubscribe = onAuthStateChanged(auth, (user) => {
   if (user) {
     // when user is signed in
@@ -50,6 +52,10 @@ return ()=> unsubscribe();
 
 }, []);
 
+const handleGptSearchClick = ()=>{
+  dispatch(toggleGptSearchView());
+}
+
 
   return (
     <div className="w-screen absolute flex justify-between bg-gradient-to-b from-black px-4 py-2 z-10">
@@ -59,8 +65,9 @@ return ()=> unsubscribe();
       {
         userData &&
       <div className="items-center flex ">
+        <button className="bg-green-500 font-medium py-1 px-2 mr-2 rounded-md" onClick={handleGptSearchClick} >GPT Search</button>
         <img className="w-9 h-9 rounded-3xl mr-2 " src={userData?.photoURL} alt="Loading..."/>
-        <div className="pr-2 font-medium">{userData?.displayName}</div>
+        <div className="pr-2 font-medium text-white">{userData?.displayName}</div>
         <button className="bg-red-800 px-2 py-1 rounded-md font-medium text-white" onClick={handleLogout}>Logout</button>
       </div>
 }
