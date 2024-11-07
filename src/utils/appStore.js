@@ -1,14 +1,14 @@
 import {configureStore} from "@reduxjs/toolkit";
 import authenticatedUserDataReducer from "./signedInUserDataSlice"
 import moviesReducer from "./moviesSlice"
-import gptReducer from "./gptSlice";
+import geminiAIReducer from "./geminiSlice";
 
 
 const appStore = configureStore({
      reducer:{
       authenticatedUserData: authenticatedUserDataReducer,
       movies: moviesReducer,
-      gpt: gptReducer,
+      geminiAI: geminiAIReducer,
      }
 });
 

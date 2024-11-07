@@ -1,12 +1,19 @@
 import React,{useRef} from 'react'
 import model from "../utils/geminiAi"
 import {useDispatch} from "react-redux";
-import { addAiRecommededMovies } from '../utils/moviesSlice';
 import Error from "./Error";
+import { API_OPTIONS } from '../utils/constants';
+import { addSearchedMovieLists } from '../utils/geminiSlice';
 
 const GptSearchBar = () => {
   const searchText = useRef(null);
   const dispatch = useDispatch();
+
+  const  searchedMovieResults = async (movie)=>{
+      const data = await fetch('https://api.themoviedb.org/3/search/movie?query='+movie+'&include_adult=false&language=en-US&page=1', API_OPTIONS);
+      const json = await data?.json();
+    return json?.results;
+  }
 
    const handleGptSearchButton = async ()=>{
    const QueryForGeminiAI = " Act as a Movie Recommendation System and suggest some good movies for the query"+searchText.current.value+". only give me names of 10 movies, comma seperated like the example result given ahead. Example Result: Gadar, sholay, Don, Golamal, Koil Milgaya"; 
@@ -15,7 +22,13 @@ const GptSearchBar = () => {
     if (!aiResults.response) {
       return <Error/>; // Handling Errors
     }
-    const aiResultsList = aiResults.response.text().split(",");
+    const aiMovieResultsList = aiResults.response.text().split(",");
+     
+    const promiseArray = aiMovieResultsList.map((movie)=>searchedMovieResults(movie));
+     // ["Promise", "Promise","Promise", "Promise", "Promise"]
+     const searchedMoviesTMDB = await Promise.all(promiseArray);
+      dispatch(addSearchedMovieLists({movieNames: aiMovieResultsList, movieResults: searchedMoviesTMDB }));
+
   } catch (error) {
     console.error("Error generating content:", error);
   }

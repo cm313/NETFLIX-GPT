@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {addUser, removeUser} from "../utils/signedInUserDataSlice";
 import {useSelector} from "react-redux";
-import { toggleGptSearchView } from '../utils/gptSlice';
+import { toggleGptSearchView } from '../utils/geminiSlice';
 
 
 const Header = () => {
@@ -14,7 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const  userData = useSelector((store)=>store?.authenticatedUserData);
-  const isGptSearchEnabled = useSelector((store)=>store?.gpt?.isGptSearchEnabled);
+  const isGptSearchEnabled = useSelector((store)=>store?.geminiAI?.isGptSearchEnabled);
 
  const handleLogout= ()=>{
     signOut(auth).then(() => {

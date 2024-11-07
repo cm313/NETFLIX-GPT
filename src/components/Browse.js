@@ -12,7 +12,7 @@ import {useSelector} from "react-redux";
 
 const Browse = () => {
 
-  const showGptSearch = useSelector((store)=>store?.gpt?.isGptSearchEnabled);
+  const showGptSearch = useSelector((store)=>store?.geminiAI?.isGptSearchEnabled);
   
   useNowPlayingMovies();
   usePopularMovies();
