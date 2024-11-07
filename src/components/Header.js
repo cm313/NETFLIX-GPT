@@ -14,6 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const  userData = useSelector((store)=>store?.authenticatedUserData);
+  const isGptSearchEnabled = useSelector((store)=>store?.gpt?.isGptSearchEnabled);
 
  const handleLogout= ()=>{
     signOut(auth).then(() => {
@@ -65,7 +66,11 @@ const handleGptSearchClick = ()=>{
       {
         userData &&
       <div className="items-center flex ">
-        <button className="bg-green-500 font-medium py-1 px-2 mr-2 rounded-md" onClick={handleGptSearchClick} >GPT Search</button>
+        <button className="bg-green-500 font-medium py-1 px-2 mr-2 rounded-md" onClick={handleGptSearchClick} >
+          {
+            isGptSearchEnabled ? "Home" : "GPT Search" 
+          }
+          </button>
         <img className="w-9 h-9 rounded-3xl mr-2 " src={userData?.photoURL} alt="Loading..."/>
         <div className="pr-2 font-medium text-white">{userData?.displayName}</div>
         <button className="bg-red-800 px-2 py-1 rounded-md font-medium text-white" onClick={handleLogout}>Logout</button>

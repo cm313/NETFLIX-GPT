@@ -11,7 +11,7 @@ const MovieLists = ({title, movies}) => {
         {
           movies?.map((movie)=>{
             const{id, poster_path, original_title} = movie;
-          return  <MovieCards id={id} path={poster_path} title={original_title}/>
+          return  <MovieCards key={id} path={poster_path} title={original_title}/>
           })
         }
       </div>

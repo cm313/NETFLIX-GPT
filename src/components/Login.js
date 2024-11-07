@@ -6,6 +6,7 @@ import {auth} from "../utils/firbase";
 import profilePic from "../images/ChandraMahesh_ProfilePic.jpg"
 import {useDispatch} from "react-redux";
 import {addUser} from "../utils/signedInUserDataSlice";
+import {BG_IMG_URL} from "../utils/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -90,7 +91,7 @@ const Login = () => {
     <div className="m-0 h-[1500px]">
       <Header />
       <div className="absolute">
-        <img className="filter brightness-75 z-0" src="https://assets.nflxext.com/ffe/siteui/vlv3/7c0e18aa-2c95-474d-802e-7f30e75dcca4/web/IN-en-20241014-TRIFECTA-perspective_e7121311-c11e-4809-a3e6-22abffa33569_small.jpg" alt="Background Loading"></img>
+        <img className="filter brightness-75 z-0" src={BG_IMG_URL} alt="Background Loading"></img>
       </div>
           <form onSubmit ={(event)=>event.preventDefault()} className="z-10 py-16 w-4/12 px-14 bg-black bg-opacity-70 absolute mt-20 mx-auto left-0 right-0 rounded-md text-white ">
           <h1 className="ml-3 mb-5 font-bold text-3xl" >{isSignInForm? "Sign In" : "Sign Up"}</h1>
