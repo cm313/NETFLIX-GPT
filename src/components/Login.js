@@ -88,12 +88,12 @@ const Login = () => {
 
   
   return (
-    <div className="m-0 h-[1500px]">
+    <div className="m-0 h-full">
       <Header />
-      <div className="absolute">
-        <img className="filter brightness-75 z-0" src={BG_IMG_URL} alt="Background Loading"></img>
+      <div className="fixed">
+        <img className=" h-screen w-screen object-cover filter brightness-75 z-0" src={BG_IMG_URL} alt="Background Loading"></img>
       </div>
-          <form onSubmit ={(event)=>event.preventDefault()} className="z-10 py-16 w-4/12 px-14 bg-black bg-opacity-70 absolute mt-20 mx-auto left-0 right-0 rounded-md text-white ">
+          <form onSubmit ={(event)=>event.preventDefault()} className="z-10 py-16 w-3/4 md:w-4/12 px-14 bg-black bg-opacity-70 absolute mt-14 mx-auto left-0 right-0 rounded-md text-white ">
           <h1 className="ml-3 mb-5 font-bold text-3xl" >{isSignInForm? "Sign In" : "Sign Up"}</h1>
           {
             !isSignInForm &&
@@ -101,7 +101,7 @@ const Login = () => {
           }
             <input ref={emailObj} className="px-2 py-4 m-2 w-full bg-gray-600 bg-opacity-55  rounded-md" type="text" placeholder="email or mobilenumber"></input>
             <input ref={passwordObj} className="px-2 py-4 m-2 w-full bg-gray-600 bg-opacity-55 rounded-md" type="password" placeholder="password"></input>
-            <button className=" bg-red-700 p-2 m-2 w-full rounded-md font-medium" onClick={handleFormButton} >{isSignInForm? "Sign In" : "Sign Up"}</button>
+            <button className=" bg-red-700 hover:bg-red-600 transition-colors duration-100 p-2 m-2 w-full rounded-md font-medium" onClick={handleFormButton} >{isSignInForm? "Sign In" : "Sign Up"}</button>
             <div className="text-red-500 text-sm py-2">{errorMessage}</div>
             {
               isSignInForm && 
@@ -121,7 +121,6 @@ const Login = () => {
             : <div className="cursor-pointer" onClick={updateForm}>Already have an account? <b>Sign In</b></div>
             }
           </form>
-      <div className="bg-black h-full"></div>
       </div>
   )
 }

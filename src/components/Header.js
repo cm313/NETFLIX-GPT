@@ -59,21 +59,22 @@ const handleGptSearchClick = ()=>{
 
 
   return (
-    <div className="w-screen absolute flex justify-between bg-gradient-to-b from-black px-4 py-2 z-10">
+    <div className="w-screen absolute flex flex-col md:flex-row justify-between bg-gradient-to-b from-black px-4 py-2 z-10">
       <div>
-      <img className="w-36 h-14 hover:cursor-pointer" src = {NetflixLogo} alt="Logo"/>
+      <img className="w-36 mx-auto md:mx-0 h-14 hover:cursor-pointer" src = {NetflixLogo} alt="Logo"/>
       </div>
       {
         userData &&
-      <div className="items-center flex ">
-        <button className="bg-green-500 font-medium py-1 px-2 mr-2 rounded-md" onClick={handleGptSearchClick} >
+      <div className="items-center flex mx-auto md:mx-0">
+        <button className="bg-green-500 hover:bg-green-400 transition-colors duration-300 font-medium py-1 px-2 mr-2 rounded-md" onClick={handleGptSearchClick} >
           {
-            isGptSearchEnabled ? "Home" : "GPT Search" 
+            isGptSearchEnabled ? "Home" : "AI Search" 
           }
           </button>
-        <img className="w-9 h-9 rounded-3xl mr-2 " src={userData?.photoURL} alt="Loading..."/>
-        <div className="pr-2 font-medium text-white">{userData?.displayName}</div>
-        <button className="bg-red-800 px-2 py-1 rounded-md font-medium text-white" onClick={handleLogout}>Logout</button>
+          <button className="bg-red-700 hover:bg-red-600 transition-colors duration-300 px-2 py-1 rounded-md font-medium text-white" onClick={handleLogout}>Logout</button>
+        <img className="w-9 h-9 rounded-3xl mx-2 " src={userData?.photoURL} alt="Loading..."/>
+        <div className="hidden md:inline-block pr-2 font-medium text-white">{userData?.displayName}</div>
+        
       </div>
 }
     </div>
