@@ -5,10 +5,10 @@ export const  validateFormData = (email, password)=>{
               return "Enter correct email and password";
             }
             if(!isEmailValid){
-              return "Check email you have entered ";
+              return "Check email you have entered";
             }
             if(!isPasswordValid){
-              return "Strong password required";
+              return "Check password you have entered";
             }
             return null;
             }
