@@ -22,6 +22,6 @@ Through Stream AI, I gained hands-on experience with AI integration, dynamic sta
 
 ## 🔗 Try It Out
 Live Demo: https://cineai-1e235.web.app/
-To Clone this repository: In Command Line Type: git clone https://github.com/cm313/STREAM-AI.git
+To Clone this repository in terminal Type: git clone https://github.com/cm313/STREAM-AI.git
 
 
