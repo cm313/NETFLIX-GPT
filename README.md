@@ -1,4 +1,4 @@
-# 🚀 Stream AI: Your Personalized AI-Driven Streaming Experience 🎬🤖
+# 🎬 Stream AI: Your Personalized AI-Driven Streaming Experience 🤖
 ### Stream AI is a unique streaming platform that combines the elegance of Netflix’s UI with the power of AI to bring you movie recommendations like never before. Built as a full-fledged web application with React.js and Redux, this project stands out by utilizing Gemini AI for personalized recommendations and TMDB API for real-time content data, showcasing a fusion of entertainment and cutting-edge technology.
 
 ## 🌐 About Stream AI
