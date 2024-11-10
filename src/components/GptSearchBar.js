@@ -8,6 +8,7 @@ import { addSearchedMovieLists } from '../utils/geminiSlice';
 const GptSearchBar = () => {
   const searchText = useRef(null);
   const dispatch = useDispatch();
+  
 
   const  searchedMovieResults = async (movie)=>{
       const data = await fetch('https://api.themoviedb.org/3/search/movie?query='+movie+'&include_adult=false&language=en-US&page=1', API_OPTIONS);
@@ -38,8 +39,8 @@ const GptSearchBar = () => {
   return (
     <div className="pt-[35%] md:pt-[10%] flex justify-center">
       <form className="bg-black w-3/4 md:w-1/2 grid grid-cols-12 rounded-sm" onSubmit={(event)=>event.preventDefault()} >
-        <input ref={searchText} className="py-2 px-2 my-4 mx-2 col-span-9 rounded-md" type="text" placeholder="What's  your mood to watch, search here"/>
-        <button className="bg-red-800 py-2 px-4 my-4 mr-2 col-span-3 text-white rounded-md" onClick={handleGptSearchButton} >Search</button>
+        <input ref={searchText} className="py-2 px-2 my-4 mx-2 col-span-9 rounded-md" type="text" placeholder="Want to recommend movies you need? ask our AI"/>
+        <button className="bg-red-700 hover:bg-red-600 transition-colors duration-300 py-2 px-4 my-4 mr-2 col-span-3 text-white rounded-md" onClick={handleGptSearchButton} >Search</button>
       </form>
     </div>
   )

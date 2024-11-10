@@ -5,8 +5,7 @@ import useMovieTrailer from '../customHooks/useMovieTrailer';
 
 const VideoTrailer = (props) => {
   const movieTrailerData = useSelector((store)=>store?.movies?.movieTrailer) 
-  const{movieId} = props;
-
+  const{movieId} = props; 
  useMovieTrailer(movieId);
 
   return (

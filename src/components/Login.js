@@ -11,7 +11,7 @@ import {BG_IMG_URL} from "../utils/constants";
 const Login = () => {
   const dispatch = useDispatch();
   const[isSignInForm, setSignInForm] = useState(true);
-  const[errorMessage, setErrorMessage] = useState(null);
+  const[errorMessage, setErrorMessage] = useState("Enter correct email and password");
 
   const emailObj = useRef(null);
   const passwordObj = useRef(null);
@@ -27,7 +27,7 @@ const Login = () => {
 
   const handleFormButton = ()=>{
         //Validating form Data
-       const message = validateFormData(emailObj.current.value, passwordObj.current.value);
+      const message = validateFormData(emailObj.current.value, passwordObj.current.value);
        setErrorMessage(message);
        if(message)
         return;
@@ -60,7 +60,8 @@ const Login = () => {
               const errorCode = error.code;
               const errorMessage = error.message;
               // If API if failed to signUp then it returns an error;
-              setErrorMessage(errorCode+"-"+errorMessage);
+             // setErrorMessage(errorCode+"-"+errorMessage);
+             setErrorMessage("Enter the required details correctly to SignUp");
               // ..
             });
       }
@@ -81,7 +82,8 @@ const Login = () => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            setErrorMessage(errorCode+"-"+errorMessage);
+           // setErrorMessage(errorCode+"-"+errorMessage);
+           setErrorMessage("Enter valid email and password to SignIn");
           });        
       }
   }
@@ -97,12 +99,12 @@ const Login = () => {
           <h1 className="ml-3 mb-5 font-bold text-3xl" >{isSignInForm? "Sign In" : "Sign Up"}</h1>
           {
             !isSignInForm &&
-            <input ref={nameObj} className="px-2 py-4 m-2 w-full  bg-gray-600 bg-opacity-55  rounded-md" type="text" placeholder="user name"></input>
+            <input ref={nameObj} className="px-2 py-4 m-2 w-full bg-gray-600 bg-opacity-55  rounded-md" type="text" placeholder="user name"></input>
           }
             <input ref={emailObj} className="px-2 py-4 m-2 w-full bg-gray-600 bg-opacity-55  rounded-md" type="text" placeholder="email or mobilenumber"></input>
             <input ref={passwordObj} className="px-2 py-4 m-2 w-full bg-gray-600 bg-opacity-55 rounded-md" type="password" placeholder="password"></input>
             <button className=" bg-red-700 hover:bg-red-600 transition-colors duration-100 p-2 m-2 w-full rounded-md font-medium" onClick={handleFormButton} >{isSignInForm? "Sign In" : "Sign Up"}</button>
-            <div className="text-red-500 text-sm py-2">{errorMessage}</div>
+            <div className="text-red-500 text-base font-medium py-2">{errorMessage}</div>
             {
               isSignInForm && 
               <div>

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import NetflixLogo from "../images/Netflix_Logo.png"
+import StreamAI_Logo from "../images/StreamAI_Logo.png"
 import {signOut, onAuthStateChanged  } from "firebase/auth";
 import {auth} from "../utils/firbase";
 import {useNavigate} from "react-router-dom";
@@ -61,7 +61,7 @@ const handleGptSearchClick = ()=>{
   return (
     <div className="w-screen absolute flex flex-col md:flex-row justify-between bg-gradient-to-b from-black px-4 py-2 z-10">
       <div>
-      <img className="w-36 mx-auto md:mx-0 h-14 hover:cursor-pointer" src = {NetflixLogo} alt="Logo"/>
+      <img className="md:w-32 w-24 mx-auto md:mx-0 h-11 md:h-11 hover:cursor-pointer rounded-lg" src = {StreamAI_Logo} alt="Logo"/>
       </div>
       {
         userData &&

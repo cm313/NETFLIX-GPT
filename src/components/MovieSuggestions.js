@@ -2,6 +2,7 @@ import React from 'react'
 import {useSelector} from "react-redux";
 import MovieLists from './MovieLists';
 
+
 const MovieSuggestions = () => {
   const {movieNames,  movieResults} = useSelector((store)=>store?.geminiAI);
   if(!movieNames)

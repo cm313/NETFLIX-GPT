@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import MovieLists from './MovieLists';
 
 const SecondaryContainer = () => {
- 
   const moviesList = useSelector((store)=>store?.movies);
   if(!moviesList?.nowPlayingMovies)
     return;
